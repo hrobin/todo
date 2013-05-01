@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Busy Bee</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!--From original html index file
+  ================================================== -->
+	
+	        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Backbone ToDo Sample Application</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Rokkitt' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="FontAwesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	<!-- Delete everything in this .container and get started on your own site! -->
+	
+		<section id="bar">
+			<div id="bee">
+				<h1 class="textBusy">Busy</h1>
+					<div id="image">
+						<img src="img/bee.png">
+					</div>
+				<h1 class="textBee">Bee</h1>
+			</div>
+		</section>
+		
+		
+		<section id="subhead">
+			<h3>WE KNOW LIFE IS HECTIC. <br>STAY ORGANIZED WITH THIS <br>HANDY LITTLE TO DO LIST.</h3>
+
+			<div class="arrow">
+				<img src="img/arrow.png">
+			</div>
+			<h4>get started</h4>
+			
+		</section>
+		
+	<div class="container">
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <section id="todoapp">
+            <header id="header">
+            <div class="six columns offset-by-six">
+                <h2>My To Do's</h2> 
+                <input id="new-todo" placeholder="What needs to be done?" autofocus>
+            </div> 
+            
+            <div class="clear"></div>
+            
+            </header> <!-- /#header -->
+            
+            <section id="main">
+            	<div class="form01 sixteen columns offset-by-six">
+					<input id="toggle-all" type="checkbox">
+					
+				<div class="checkoff">	
+					<label for="toggle-all">Check 'em all off!</label>
+				</div>	
+				</div>
+				
+				<div class="clear"></div>
+				
+				
+				<ul id="todo-list"></ul>
+				
+            </section> <!-- /#main -->
+            
+            <footer id="footer"></footer> <!-- /#footer -->
+            
+        </section> <!-- #todoapp -->
+        	
+        <footer id="info">
+            <p>Double-click to edit a todo</p>
+        </footer> <!-- /#info -->
+
+		<script id="item-template" type="text/template">
+			<div class="view sixteen columns">
+			
+			<input type="checkbox" class="toggle" <%= completed  ? 'checked' : '' %>>
+				
+			<label class="three columns"><%- title %></label>
+			<i class="icon-edit icon-2x three columns"></i>
+			<i class="destroy icon-remove icon-2x three columns"></i>
+			
+			<div class="clear"></div>
+			
+			</div> <!-- /.view -->
+			
+			<div class="formE">
+				<input class="edit" value="<%- title %>">
+			</div>
+			
+			<div class="clear"></div>
+		</script>
+		
+		<script id="stats-template" type="text/template">
+		
+		<div class="final sixteen columns offset-by-six">
+
+			<span id="todo-count">
+				<strong><%= remaining %></strong>
+				<%= remaining === 1 ? 'item' : 'items' %>
+				left
+			</span>
+			
+			<ul id="filters">
+				<li><a href="#/" class="selected">All</a></li>
+				<li><a href="#/active">Active</a></li>
+				<li><a href="#/completed">Completed</a></li>
+			</ul>
+
+			
+			<% if (completed) { %>
+			<button id="clear-completed">Clear Completed (<%= completed %>)</button>
+			<% } %>	
+			
+		</div> <!-- /.bottom -->
+			
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+
+        <script src="components/underscore/underscore-min.js"></script>
+        <script src="components/backbone/backbone-min.js"></script>
+        <script src="components/backbone.localStorage/backbone.localStorage-min.js"></script>
+
+        <script src="js/models/todo.js"></script>
+        <script src="js/collections/todos.js"></script>
+        <script src="js/views/todos.js"></script>
+        <script src="js/views/app.js"></script>
+        <script src="js/routers/router.js"></script>
+        <script src="js/app.js"></script>
+
+	</div><!-- container -->
+
+
+<div id="bottom">
+	<p>thanks for playing!</p>
+</div>
+
+
+
+<!-- End Document
+================================================== -->
+</body>
+</html>
